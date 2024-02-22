@@ -17,13 +17,6 @@
                 width: 360px;
             }
         </style>
-        <script>
-            document.getElementById("contador").innerText = localStorage.getItem("contar")
-            function contar() {
-                localStorage.setItem("contar", Number(localStorage.getItem("contar")) + 1)
-                document.getElementById("contador").innerText = localStorage.getItem("contar")
-            }
-        </script>
     </head>
     <body>
         <p>ESKIRIRIRURIRIRU</p>
@@ -33,5 +26,12 @@
         <p class="azu">azu'</p>
         <button onclick="contar()">acariciar cuca</button>
         <h2 id="contador">plo</h2>
+        <script>
+            document.getElementById("contador").innerText = localStorage.getItem("contar")
+            function contar() {
+                localStorage.setItem("contar", Number(localStorage.getItem("contar")) + 1)
+                document.getElementById("contador").innerText = localStorage.getItem("contar")
+            }
+        </script>
     </body>
 </html>
