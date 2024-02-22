@@ -41,10 +41,10 @@
         <button onclick="contar()">Acariciar cuca</button>
         <p>Has acariciado a la cuca <span id="contador">plo</span> veces</p>
         <script>
-            document.getElementById("contador").innerText = localStorage.getItem("contar")
+            document.getElementById("contador").innerText = Number(localStorage.getItem("contar"))
             function contar() {
                 localStorage.setItem("contar", Number(localStorage.getItem("contar")) + 1)
-                document.getElementById("contador").innerText = localStorage.getItem("contar")
+                document.getElementById("contador").innerText = Number(localStorage.getItem("contar"))
             }
         </script>
     </body>
