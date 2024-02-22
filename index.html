@@ -16,6 +16,13 @@
             .cuca {
                 width: 360px;
             }
+            button {
+                background-color: #38322f;
+                color: #ffffff
+            }
+            button:hover {
+                background-color: #48423f;
+            }
         </style>
     </head>
     <body>
@@ -25,7 +32,7 @@
         </p>
         <p class="azu">azu'</p>
         <button onclick="contar()">acariciar cuca</button>
-        <h2 id="contador">plo</h2>
+        <h2>Has acariciado a la cuca <span id="contador">plo</span> veces</h2>
         <script>
             document.getElementById("contador").innerText = localStorage.getItem("contar")
             function contar() {
