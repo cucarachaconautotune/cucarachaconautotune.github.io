@@ -30,6 +30,17 @@
             button:active {
                 background-color: #38322f;
             }
+
+            /* https://stackoverflow.com/a/45040337 */
+            #carisia {
+                background-image: url('carisia.png');
+                width: 128px;
+                height: 128px;
+                animation: carisia 1.0s steps(11) 1;
+            }
+            @keyframes carisia {
+                100% { background-position: -1408px; }
+            }
         </style>
     </head>
     <body>
@@ -38,10 +49,11 @@
             <a href="https://es.wikipedia.org/wiki/Blattodea"><img class="cuca" src="cucarachaconautotune.gif"></a><span style="font-size: 400px;">🧇</span><span style="font-size: 200px;">🧇</span><span style="font-size: 100px;">🧇</span><span style="font-size: 50px;">🧇</span><span style="font-size: 25px;">🧇</span><span style="font-size: 12.5px;">🧇</span><span style="font-size: 6.25px;">🧇</span><span style="font-size: 3.125px;">🧇</span><span style="font-size: 1.5px;">🧇</span><span style="font-size: 1px;">(insertar gofre más pequeño aquí)</span>
         </p>
         <p class="azu">azu'</p>
-        <button onclick="contar()">Acariciar cuca</button>
+        <button onclick="contar()">Acariciar cuca<div id="carisia"></button>
         <p id="contador"></p>
         <script>
             let carisias;
+            let animasion;
             function ponertesto() {
                 carisias = Number(localStorage.getItem("contar"));
                 if (carisias == 0) {
@@ -56,6 +68,10 @@
             function contar() {
                 localStorage.setItem("contar", Number(localStorage.getItem("contar")) + 1);
                 ponertesto();
+                animasion = document.getElementById("carisia")
+                animasion.style.animation = 'none';
+                animasion.offsetHeight;
+                animasion.style.animation = null;
             }
         </script>
     </body>
