@@ -39,12 +39,23 @@
         </p>
         <p class="azu">azu'</p>
         <button onclick="contar()">Acariciar cuca</button>
-        <p>Has acariciado a la cuca <span id="contador">plo</span> veces</p>
+        <p id="contador"></p>
         <script>
-            document.getElementById("contador").innerText = Number(localStorage.getItem("contar"))
+            let carisias;
+            function ponertesto() {
+                carisias = Number(localStorage.getItem("contar"));
+                if (carisias == 0) {
+                    document.getElementById("contador").innerText = "No has acariciado a la cuca :(";
+                } else if (carisias == 1) {
+                    document.getElementById("contador").innerText = "Has acariciado a la cuca 1 vez.";
+                } else {
+                    document.getElementById("contador").innerText = "Has acariciado a la cuca " + carisias + " veces.";
+                }
+            }
+            ponertesto();
             function contar() {
-                localStorage.setItem("contar", Number(localStorage.getItem("contar")) + 1)
-                document.getElementById("contador").innerText = Number(localStorage.getItem("contar"))
+                localStorage.setItem("contar", Number(localStorage.getItem("contar")) + 1);
+                ponertesto();
             }
         </script>
     </body>
