@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>cuca clicker</title>
+    <link href="/plo.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Cuca clicker</h1>
+    <button onclick="contar()" style="padding: 0px;"><div id="carisia"></div></button>
+    <p id="contador"></p>
+    <script>
+        let carisias;
+        let animasion;
+        function ponertesto() {
+            carisias = Number(localStorage.getItem("contar"));
+            if (carisias == 0) {
+                document.getElementById("contador").innerText = "No has acariciado a la cuca :(";
+            } else if (carisias == 1) {
+                document.getElementById("contador").innerText = "Has acariciado a la cuca 1 vez.";
+            } else {
+                document.getElementById("contador").innerText = "Has acariciado a la cuca " + carisias + " veces.";
+            }
+        }
+        ponertesto();
+        function contar() {
+            localStorage.setItem("contar", Number(localStorage.getItem("contar")) + 1);
+            ponertesto();
+            animasion = document.getElementById("carisia")
+            animasion.style.animation = 'none';
+            animasion.offsetHeight;
+            animasion.style.animation = null;
+            animasion.style.animationPlayState = 'running'
+        }
+    </script>
+  </body>
+</html>
