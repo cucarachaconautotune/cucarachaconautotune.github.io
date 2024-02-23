@@ -2,46 +2,7 @@
 <html>
     <head>
         <title>cucaracha</title>
-        <style>
-            body {
-                background-color: #28221f;
-                color: #ffffff;
-                font-family: arial;
-                width: max-content;
-                height: max-content;
-            }
-            .azu {
-                color: #5555dd
-            }
-            .cuca {
-                width: 360px;
-            }
-            button {
-                background-color: #38322f;
-                color: #ffffff;
-                border-width: 0px;
-                border-radius: 10px;
-                font-size: 30px;
-                font-weight: bold;
-            }
-            button:hover {
-                background-color: #48423f;
-            }
-            button:active {
-                background-color: #38322f;
-            }
-
-            /* https://stackoverflow.com/a/45040337 */
-            #carisia {
-                background-image: url('carisia.png');
-                width: 128px;
-                height: 128px;
-                animation: carisia 0.2s steps(11) 1 paused;
-            }
-            @keyframes carisia {
-                100% { background-position: -1408px; }
-            }
-        </style>
+        <link href="/plo.css" rel="stylesheet">
     </head>
     <body>
         <p>ESKIRIRIRURIRIRU</p>
@@ -49,31 +10,6 @@
             <a href="https://es.wikipedia.org/wiki/Blattodea"><img class="cuca" src="cucarachaconautotune.gif"></a><span style="font-size: 400px;">🧇</span><span style="font-size: 200px;">🧇</span><span style="font-size: 100px;">🧇</span><span style="font-size: 50px;">🧇</span><span style="font-size: 25px;">🧇</span><span style="font-size: 12.5px;">🧇</span><span style="font-size: 6.25px;">🧇</span><span style="font-size: 3.125px;">🧇</span><span style="font-size: 1.5px;">🧇</span><span style="font-size: 1px;">(insertar gofre más pequeño aquí)</span>
         </p>
         <p class="azu">azu'</p>
-        <button onclick="contar()" style="padding: 0px;"><div id="carisia"></button>
-        <p id="contador"></p>
-        <script>
-            let carisias;
-            let animasion;
-            function ponertesto() {
-                carisias = Number(localStorage.getItem("contar"));
-                if (carisias == 0) {
-                    document.getElementById("contador").innerText = "No has acariciado a la cuca :(";
-                } else if (carisias == 1) {
-                    document.getElementById("contador").innerText = "Has acariciado a la cuca 1 vez.";
-                } else {
-                    document.getElementById("contador").innerText = "Has acariciado a la cuca " + carisias + " veces.";
-                }
-            }
-            ponertesto();
-            function contar() {
-                localStorage.setItem("contar", Number(localStorage.getItem("contar")) + 1);
-                ponertesto();
-                animasion = document.getElementById("carisia")
-                animasion.style.animation = 'none';
-                animasion.offsetHeight;
-                animasion.style.animation = null;
-                animasion.style.animationPlayState = 'running'
-            }
-        </script>
+        <a href="/cucaclicker">cuca clicker</a>
     </body>
 </html>
