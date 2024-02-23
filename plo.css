@@ -1,0 +1,38 @@
+body {
+    background-color: #28221f;
+    color: #ffffff;
+    font-family: arial;
+    width: max-content;
+    height: max-content;
+}
+.azu {
+    color: #5555dd
+}
+.cuca {
+    width: 360px;
+}
+button {
+    background-color: #38322f;
+    color: #ffffff;
+    border-width: 0px;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+button:hover {
+    background-color: #48423f;
+}
+button:active {
+    background-color: #38322f;
+}
+
+/* https://stackoverflow.com/a/45040337 */
+#carisia {
+    background-image: url('carisia.png');
+    width: 128px;
+    height: 128px;
+    animation: carisia 0.2s steps(11) 1 paused;
+}
+@keyframes carisia {
+    100% { background-position: -1408px; }
+}
