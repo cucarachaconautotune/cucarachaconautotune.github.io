@@ -11,15 +11,18 @@ body {
 .cuca {
     width: 360px;
 }
-button {
+button, input {
     background-color: #38322f;
     color: #ffffff;
     border-width: 0px;
     border-radius: 10px;
-    font-size: 30px;
+    padding: 3px;
+    margin-bottom: 3px;
+}
+button {
     font-weight: bold;
 }
-button:hover {
+button:hover, input:hover, input:active {
     background-color: #48423f;
 }
 button:active {
