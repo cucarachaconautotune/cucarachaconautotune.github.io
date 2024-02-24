@@ -6,7 +6,14 @@
   </head>
   <body>
     <h1>Cuca clicker</h1>
-    <p id="cuenta"><input id="nombre"><input id="contraseña"><button onclick="entrarcuenta()">Entrar</button></p>
+    <div id="cuenta">
+      Nombre:<br>
+      <input id="nombre"><br>
+      Contraseña:<br>
+      <input id="contraseña"><br>
+      todavia no he programado hacer cuentas nuevas asi que solo puedo entrar yo. plo.
+      <button onclick="entrarcuenta()">Entrar</button>
+    </div>
     <button id="boton" onclick="contar()" style="padding: 0px;"><div id="carisia"></div></button>
     <p id="contador"></p>
     <script>
@@ -25,8 +32,10 @@
                 contador.innerText = "Has acariciado a la cuca " + carisias + " veces.";
             }
         }
-        ponertesto();
+      
         function contar() {
+            carisias = carisias + 1;
+            ponertesto();
             carisia();
             animasion.style.animation = 'none';
             animasion.offsetHeight;
