@@ -11,8 +11,7 @@
       <input id="nombre"><br>
       Contraseña:<br>
       <input id="contraseña"><br>
-      todavia no he programado hacer cuentas nuevas asi que solo puedo entrar yo. plo.
-      <button onclick="entrarcuenta()">Entrar</button>
+      <button onclick="entrarcuenta()">Entrar</button><button onclick="crearcuenta()">Crear cuenta</button>
     </div>
     <button id="boton" onclick="contar()" style="padding: 0px;"><div id="carisia"></div></button>
     <p id="contador"></p>
@@ -65,6 +64,19 @@
             nombre = document.getElementById("nombre").value;
             contraseña = document.getElementById("contraseña").value;
             respuesta = (await servidor("https://45.90.13.219:6985/cuenta.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
+            if (Number(respuesta)) {
+                carisias = Number(respuesta);
+                ponertesto();
+                document.getElementById("boton").style.display = null;
+                document.getElementById("cuenta").style.display = "none";
+            } else {
+                contador.innerText = respuesta;
+            }
+        }
+        async function crearcuenta() {
+            nombre = document.getElementById("nombre").value;
+            contraseña = document.getElementById("contraseña").value;
+            respuesta = (await servidor("https://45.90.13.219:6985/crear.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
             if (Number(respuesta)) {
                 carisias = Number(respuesta);
                 ponertesto();
