@@ -6,30 +6,64 @@
   </head>
   <body>
     <h1>Cuca clicker</h1>
-    <button onclick="contar()" style="padding: 0px;"><div id="carisia"></div></button>
+    <p id="cuenta"><input id="nombre"><input id="contraseña"><button onclick="cuenta()">Entrar</button></p>
+    <button id="boton" onclick="contar()" style="padding: 0px;"><div id="carisia"></div></button>
     <p id="contador"></p>
     <script>
         let carisias;
-        let animasion;
+        let animasion = document.getElementById("carisia");
+        let contador = document.getElementById("contador");
+        let nombre;
+        let cuenta;
+        document.getElementById("boton").style.display = "none";
         function ponertesto() {
-            carisias = Number(localStorage.getItem("contar"));
             if (carisias == 0) {
-                document.getElementById("contador").innerText = "No has acariciado a la cuca :(";
+                contador.innerText = "No has acariciado a la cuca :(";
             } else if (carisias == 1) {
-                document.getElementById("contador").innerText = "Has acariciado a la cuca 1 vez.";
+                contador.innerText = "Has acariciado a la cuca 1 vez.";
             } else {
-                document.getElementById("contador").innerText = "Has acariciado a la cuca " + carisias + " veces.";
+                contador.innerText = "Has acariciado a la cuca " + carisias + " veces.";
             }
         }
         ponertesto();
         function contar() {
-            localStorage.setItem("contar", Number(localStorage.getItem("contar")) + 1);
-            ponertesto();
-            animasion = document.getElementById("carisia")
+            carisia();
             animasion.style.animation = 'none';
             animasion.offsetHeight;
             animasion.style.animation = null;
-            animasion.style.animationPlayState = 'running'
+            animasion.style.animationPlayState = 'running';
+        }
+
+        async function servidor(url) {
+            pedido = new Request(url);
+            respuesta = await fetch(pedido);
+            str = "";
+            for await (const chunk of respuesta.body) {
+                str = str + new TextDecoder().decode(chunk);
+            }
+            return str;
+        }
+        async function carisia() {
+            respuesta = (await servidor("https://45.90.13.219:6985/carisiar.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
+            if (Number(respuesta)) {
+                carisias = Number(respuesta);
+                ponertesto();
+            } else {
+                contador.innerText = respuesta;
+            }
+        }
+        async function cuenta() {
+            nombre = document.getElementById("nombre").value;
+            contraseña = document.getElementById("contraseña").value;
+            respuesta = (await servidor("https://45.90.13.219:6985/cuenta.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
+            if (Number(respuesta)) {
+                carisias = Number(respuesta);
+                ponertesto();
+                document.getElementById("boton").style.display = null;
+                document.getElementById("cuenta").style.display = "none";
+            } else {
+                contador.innerText = respuesta;
+            }
         }
     </script>
   </body>
