@@ -64,7 +64,7 @@
             nombre = document.getElementById("nombre").value;
             contraseña = document.getElementById("contraseña").value;
             respuesta = (await servidor("https://45.90.13.219:6985/cuenta.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
-            if (Number(respuesta)) {
+            if (Number(respuesta) || Number(respuesta) == 0) {
                 carisias = Number(respuesta);
                 ponertesto();
                 document.getElementById("boton").style.display = null;
@@ -77,7 +77,7 @@
             nombre = document.getElementById("nombre").value;
             contraseña = document.getElementById("contraseña").value;
             respuesta = (await servidor("https://45.90.13.219:6985/crear.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
-            if (Number(respuesta)) {
+            if (Number(respuesta) || Number(respuesta) == 0) {
                 carisias = Number(respuesta);
                 ponertesto();
                 document.getElementById("boton").style.display = null;
