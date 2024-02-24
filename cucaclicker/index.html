@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1>Cuca clicker</h1>
-    <p id="cuenta"><input id="nombre"><input id="contraseña"><button onclick="cuenta()">Entrar</button></p>
+    <p id="cuenta"><input id="nombre"><input id="contraseña"><button onclick="entrarcuenta()">Entrar</button></p>
     <button id="boton" onclick="contar()" style="padding: 0px;"><div id="carisia"></div></button>
     <p id="contador"></p>
     <script>
@@ -52,7 +52,7 @@
                 contador.innerText = respuesta;
             }
         }
-        async function cuenta() {
+        async function entrarcuenta() {
             nombre = document.getElementById("nombre").value;
             contraseña = document.getElementById("contraseña").value;
             respuesta = (await servidor("https://45.90.13.219:6985/cuenta.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
