@@ -22,8 +22,9 @@ button, input {
 button {
     font-weight: bold;
 }
-button:hover, input:hover, input:active {
+button:hover, input:hover, input:focus-visible {
     background-color: #48423f;
+    outline: none;
 }
 button:active {
     background-color: #38322f;
