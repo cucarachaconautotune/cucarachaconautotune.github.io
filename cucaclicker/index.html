@@ -11,7 +11,7 @@
       <input id="nombre"><br>
       Contraseña:<br>
       <input type="password" id="contraseña"><br>
-      El servidor no funciona en chrome o algo no se. plo.
+      Para que funcione el servidor primero hay que ir <a href="https://45.90.13.219:6985/">aquí</a> y darle a opciones avanzadas o algo y despues a que sí que todo muy bien.<br>
       <button onclick="entrarcuenta()">Entrar</button><button onclick="crearcuenta()">Crear cuenta</button>
     </div>
     <button id="boton" onclick="contar()" style="padding: 0px;"><div id="carisia"></div></button>
@@ -43,14 +43,45 @@
             animasion.style.animationPlayState = 'running';
         }
 
-        async function servidor(url) {
-            pedido = new Request(url);
-            respuesta = await fetch(pedido);
-            str = "";
-            for await (const chunk of respuesta.body) {
-                str = str + new TextDecoder().decode(chunk);
-            }
-            return str;
+        async function servidor(url) { //ni puta idea de como funciona esto lo he copiado de https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream
+          fetch(url)
+          .then((response) => response.body)
+          .then((rb) => {
+            const reader = rb.getReader();
+        
+            return new ReadableStream({
+              start(controller) {
+                // The following function handles each data chunk
+                function push() {
+                  // "done" is a Boolean and value a "Uint8Array"
+                  reader.read().then(({ done, value }) => {
+                    // If there is no more data to read
+                    if (done) {
+                      console.log("done", done);
+                      controller.close();
+                      return;
+                    }
+                    // Get the data and send it to the browser via the controller
+                    controller.enqueue(value);
+                    // Check chunks by logging to the console
+                    console.log(done, value);
+                    push();
+                  });
+                }
+        
+                push();
+              },
+            });
+          })
+          .then((stream) =>
+            // Respond with our stream
+            new Response(stream, { headers: { "Content-Type": "text/html" } }).text(),
+          )
+          .then((result) => {
+            // Do things with result
+            console.log(result);
+            return result;
+          });
         }
         async function carisia() {
             respuesta = (await servidor("https://45.90.13.219:6985/carisiar.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
