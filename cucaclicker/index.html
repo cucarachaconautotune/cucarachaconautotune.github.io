@@ -44,7 +44,7 @@
         }
 
         async function servidor(url) { //ni puta idea de como funciona esto lo he copiado de https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream
-          fetch(url)
+          return await fetch(url)
           .then((response) => response.body)
           .then((rb) => {
             const reader = rb.getReader();
