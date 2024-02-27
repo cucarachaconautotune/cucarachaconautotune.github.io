@@ -11,7 +11,7 @@
       <input id="nombre"><br>
       Contraseña:<br>
       <input type="password" id="contraseña"><br>
-      tengo que actualizar mas cosas para que funcione, plo<br>
+      Para que funcione el servidor primero hay que ir <a href="https://45.90.13.219:6985/">aquí</a> y darle a opciones avanzadas o algo y despues a que sí que todo muy bien.<br>
       <button onclick="entrarcuenta()">Entrar</button><button onclick="crearcuenta()">Crear cuenta</button>
     </div>
     <button id="boton" onclick="contar()" style="padding: 0px;"><div id="carisia"></div></button>
@@ -84,7 +84,7 @@
           });
         }
         async function carisia() {
-            respuesta = (await servidor("https://cuca.rf.gd/carisiar.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
+            respuesta = (await servidor("https://45.90.13.219:6985/carisiar.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
             if (Number(respuesta)) {
                 carisias = Number(respuesta);
                 ponertesto();
@@ -95,7 +95,7 @@
         async function entrarcuenta() {
             nombre = document.getElementById("nombre").value;
             contraseña = document.getElementById("contraseña").value;
-            respuesta = (await servidor("https://cuca.rf.gd/cuenta.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
+            respuesta = (await servidor("https://45.90.13.219:6985/cuenta.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
             if (Number(respuesta) || Number(respuesta) == 0) {
                 carisias = Number(respuesta);
                 ponertesto();
@@ -108,7 +108,7 @@
         async function crearcuenta() {
             nombre = document.getElementById("nombre").value;
             contraseña = document.getElementById("contraseña").value;
-            respuesta = (await servidor("https://cuca.rf.gd/crear.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
+            respuesta = (await servidor("https://45.90.13.219:6985/crear.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
             if (Number(respuesta) || Number(respuesta) == 0) {
                 carisias = Number(respuesta);
                 ponertesto();
