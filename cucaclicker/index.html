@@ -104,8 +104,8 @@
                 ponertesto();
                 document.getElementById("boton").style.display = "block";
                 document.getElementById("cuenta").style.display = "none";
-                tablafuera.style.display = "block";
                 hacertabla();
+                setInterval(hacertabla, 5000);
             } else {
                 contador.innerText = respuesta;
             }
@@ -119,8 +119,8 @@
                 ponertesto();
                 document.getElementById("boton").style.display = "block";
                 document.getElementById("cuenta").style.display = "none";
-                tablafuera.style.display = "block";
                 hacertabla();
+                setInterval(hacertabla, 5000);
             } else {
                 contador.innerText = respuesta;
             }
@@ -147,6 +147,7 @@
             }
             tabla.innerHTML = "";
             tabla.appendChild(cuerpo);
+            tablafuera.style.display = "block";
         }
     </script>
   </body>
