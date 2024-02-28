@@ -55,21 +55,18 @@ button:active {
 }
 #tabla tr:nth-child(1) td:first-child:before {
     content: url("cucaoro2.png");
-    margin: 0px;
 }
 #tabla tr:nth-child(2) td:first-child:before {
     content: url("cucaplata2.png");
-    margin: 0px;
 }
 #tabla tr:nth-child(3) td:first-child:before {
     content: url("cucabronce2.png");
-    margin: 0px;
 }
 td {
   padding-right: 10px;
   padding-left: 10px;
 }
-tr {
+tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
   padding-top: 5px;
   padding-bottom: 5px;
 }
