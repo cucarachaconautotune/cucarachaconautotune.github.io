@@ -42,16 +42,23 @@ button:active {
 }
 
 @counter-style numeros {
-  system: numeric;
-  symbols: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
-  suffix: "";
+    system: numeric;
+    symbols: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
+    suffix: "";
+}
+@counter-style cucas {
+    system: fixed;
+    symbols: url("cucaoro.png", "cucaplata.png", "cucabronce.png");
+    suffix: "";
+    fallback: numeros;
 }
 #tabla {
     counter-reset: puesto;
 }
 #tabla td:first-child:before {
     counter-increment: puesto;
-    content: counter(puesto, numeros);
+    content: counter(puesto, cucas);
+    width: 20px;
 }
 td {
   padding-right: 10px;
