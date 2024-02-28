@@ -40,3 +40,38 @@ button:active {
 @keyframes carisia {
     100% { background-position: -1408px; }
 }
+
+@counter-style numeros {
+  system: numeric;
+  symbols: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
+  suffix: "";
+}
+#tabla {
+    counter-reset: puesto;
+}
+#tabla td:first-child:before {
+    counter-increment: puesto;
+    content: counter(puesto, numeros);
+}
+td {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+table {
+  border-collapse: collapse;
+}
+tr:not(:last-child) {
+  border-bottom: 1px solid #48423f;
+}
+.tablafuera {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  background-color: #38322f;
+  width: max-content;
+  height: max-content;
+}
