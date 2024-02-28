@@ -16,12 +16,13 @@
     </div>
     <button id="boton" onclick="contar()" style="padding: 0px; display: none"><div id="carisia"></div></button>
     <p id="contador"></p>
-    <div class="tablafuera"><table id="tabla"></table></div>
+    <div class="tablafuera" style="display: none"><table id="tabla"></table></div>
     <script>
         let carisias;
         let animasion = document.getElementById("carisia");
         let contador = document.getElementById("contador");
         let tabla = document.getElementById("tabla");
+        let tablafuera = document.getElementsByClassName("tablafuera")[0];
         let nombre;
         let cuenta;
         document.getElementById("boton").style.display = "none";
@@ -103,6 +104,7 @@
                 ponertesto();
                 document.getElementById("boton").style.display = "block";
                 document.getElementById("cuenta").style.display = "none";
+                tablafuera.style.display = "block";
                 hacertabla();
             } else {
                 contador.innerText = respuesta;
@@ -117,6 +119,7 @@
                 ponertesto();
                 document.getElementById("boton").style.display = "block";
                 document.getElementById("cuenta").style.display = "none";
+                tablafuera.style.display = "block";
                 hacertabla();
             } else {
                 contador.innerText = respuesta;
@@ -124,7 +127,7 @@
         }
 
         function comparar(a, b) {
-            return a.carisias - b.carisias;
+            return b.carisias - a.carisias;
         }
         async function hacertabla() {
             let lista = JSON.parse(await servidor("https://45.90.13.219:6985/lista.php"));
