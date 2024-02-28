@@ -52,16 +52,18 @@ button:active {
 #tabla td:first-child:before {
     counter-increment: puesto;
     content: counter(puesto, numeros);
-    width: 20px;
 }
 #tabla tr:nth-child(1) td:first-child:before {
     content: url("cucaoro2.png");
+    margin: 0px;
 }
 #tabla tr:nth-child(2) td:first-child:before {
     content: url("cucaplata2.png");
+    margin: 0px;
 }
 #tabla tr:nth-child(3) td:first-child:before {
     content: url("cucabronce2.png");
+    margin: 0px;
 }
 td {
   padding-right: 10px;
