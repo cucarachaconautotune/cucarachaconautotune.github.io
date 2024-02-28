@@ -14,12 +14,14 @@
       Para que funcione el servidor primero hay que ir <a href="https://45.90.13.219:6985/">aquí</a> y darle a opciones avanzadas o algo y despues a que sí que todo muy bien.<br>
       <button onclick="entrarcuenta()">Entrar</button><button onclick="crearcuenta()">Crear cuenta</button>
     </div>
-    <button id="boton" onclick="contar()" style="padding: 0px;"><div id="carisia"></div></button>
+    <button id="boton" onclick="contar()" style="padding: 0px; display: none"><div id="carisia"></div></button>
     <p id="contador"></p>
+    <div class="tablafuera"><table id="tabla"></table></div>
     <script>
         let carisias;
         let animasion = document.getElementById("carisia");
         let contador = document.getElementById("contador");
+        let tabla = document.getElementById("tabla");
         let nombre;
         let cuenta;
         document.getElementById("boton").style.display = "none";
@@ -99,8 +101,9 @@
             if (Number(respuesta) || Number(respuesta) == 0) {
                 carisias = Number(respuesta);
                 ponertesto();
-                document.getElementById("boton").style.display = null;
+                document.getElementById("boton").style.display = "block";
                 document.getElementById("cuenta").style.display = "none";
+                hacertabla();
             } else {
                 contador.innerText = respuesta;
             }
@@ -112,11 +115,34 @@
             if (Number(respuesta) || Number(respuesta) == 0) {
                 carisias = Number(respuesta);
                 ponertesto();
-                document.getElementById("boton").style.display = null;
+                document.getElementById("boton").style.display = "block";
                 document.getElementById("cuenta").style.display = "none";
+                hacertabla();
             } else {
                 contador.innerText = respuesta;
             }
+        }
+
+        function comparar(a, b) {
+            return a.carisias - b.carisias;
+        }
+        async function hacertabla() {
+            let lista = JSON.parse(await servidor("https://45.90.13.219:6985/lista.php"));
+            lista.sort(comparar);
+            const cuerpo = document.createElement("tbody");
+            for (let i = 0; i < lista.length; i++) {
+                const fila = document.createElement("tr");
+                const celda1 = document.createElement("td");
+                const celda2 = document.createElement("td");
+                const celda3 = document.createElement("td");
+                celda2.appendChild(document.createTextNode(lista[i].nombre))
+                celda3.appendChild(document.createTextNode(lista[i].carisias))
+                fila.appendChild(celda1);
+                fila.appendChild(celda2);
+                fila.appendChild(celda3);
+                cuerpo.appendChild(fila);
+            }
+            tabla.innerHTML = cuerpo;
         }
     </script>
   </body>
