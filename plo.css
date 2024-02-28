@@ -66,9 +66,11 @@ td {
   padding-right: 10px;
   padding-left: 10px;
 }
-tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
+tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) td:first-child {
   padding-top: 5px;
   padding-bottom: 5px;
+  display: flex;
+  justify-content: center;
 }
 table {
   border-collapse: collapse;
