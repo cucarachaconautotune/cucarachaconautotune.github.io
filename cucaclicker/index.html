@@ -19,6 +19,7 @@
     <div class="tablafuera" style="display: none"><table id="tabla"></table></div>
     <script>
         let carisias;
+        let acumulao = 0;
         let animasion = document.getElementById("carisia");
         let contador = document.getElementById("contador");
         let tabla = document.getElementById("tabla");
@@ -27,19 +28,23 @@
         let cuenta;
         document.getElementById("boton").style.display = "none";
         function ponertesto() {
-            if (carisias == 0) {
+            const testo = carisias + acumulao;
+            if (testo == 0) {
                 contador.innerText = "No has acariciado a la cuca :(";
-            } else if (carisias == 1) {
+            } else if (testo == 1) {
                 contador.innerText = "Has acariciado a la cuca 1 vez.";
             } else {
-                contador.innerText = "Has acariciado a la cuca " + carisias + " veces.";
+                contador.innerText = "Has acariciado a la cuca " + testo + " veces.";
             }
         }
       
         function contar() {
-            carisias = carisias + 1;
+            acumulao = acumulao + 1;
             ponertesto();
-            carisia();
+            if (acumulao > 4) {
+                carisia(5);
+                acumulao = acumulao - 5;
+            }
             animasion.style.animation = 'none';
             animasion.offsetHeight;
             animasion.style.animation = null;
@@ -86,13 +91,24 @@
             return result;
           });
         }
-        async function carisia() {
-            respuesta = (await servidor("https://45.90.13.219:6985/carisiar.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña)));
+        async function carisia(numero) {
+            respuesta = (await servidor("https://45.90.13.219:6985/carisiar.php?nombre=" + encodeURIComponent(nombre) + "&contraseña=" + encodeURIComponent(contraseña) + "&numero=" + encodeURIComponent(numero)));
             if (Number(respuesta)) {
                 carisias = Number(respuesta);
                 ponertesto();
             } else {
                 contador.innerText = respuesta;
+            }
+        }
+        async function mandaracumulao() {
+            if (acumulao > 0) {
+                if (acumulao < 6) {
+                    carisia(acumulao);
+                    acumulao = 0;
+                } else {
+                    carisia(5);
+                    acumulao = acumulao - 5;
+                }
             }
         }
         async function entrarcuenta() {
@@ -106,6 +122,7 @@
                 document.getElementById("cuenta").style.display = "none";
                 hacertabla();
                 setInterval(hacertabla, 5000);
+                setInterval(mandaracumulao, 3000);
             } else {
                 contador.innerText = respuesta;
             }
@@ -121,6 +138,7 @@
                 document.getElementById("cuenta").style.display = "none";
                 hacertabla();
                 setInterval(hacertabla, 5000);
+                setInterval(mandaracumulao, 3000);
             } else {
                 contador.innerText = respuesta;
             }
