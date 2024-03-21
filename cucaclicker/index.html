@@ -26,7 +26,18 @@
         let tablafuera = document.getElementsByClassName("tablafuera")[0];
         let nombre;
         let cuenta;
-        const audio = new Audio("/cuca1.ogg");
+        const audio = [
+          new Audio("/cuca1.ogg"),
+          new Audio("/cuca2.ogg"),
+          new Audio("/cuca3.ogg"),
+          new Audio("/cuca4.ogg"),
+          new Audio("/cuca5.ogg"),
+          new Audio("/cuca6.ogg"),
+          new Audio("/cuca7.ogg"),
+          new Audio("/cuca8.ogg"),
+          new Audio("/cuca9.ogg"),
+          new Audio("/cuca10.ogg"),
+        ];
         document.getElementById("boton").style.display = "none";
         function ponertesto() {
             const testo = carisias + acumulao;
@@ -40,7 +51,7 @@
         }
       
         function contar() {
-            audio.play();
+            audio[Math.floor(Math.random()*10)].play();
             acumulao = acumulao + 1;
             ponertesto();
             if (acumulao > 4) {
